@@ -17,6 +17,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     text-align: center;
+    background-color: #f4eae1;
 }
   
 /* Add rounded corners to the top left and the top right corner of the image */
@@ -41,4 +42,15 @@ img {
     .card {
         width: calc(50% - 20px); /* 50% width for two columns with spacing */
     }
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #594d40;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
 }

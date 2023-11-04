@@ -10,13 +10,13 @@ input[type=text]{
 
 /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: #594d40;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
 }
 
 .responsive-image{
@@ -39,7 +39,7 @@ select {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
+  background-color: #594d40; /* Black background color */
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 2px; /* Rounded borders */
