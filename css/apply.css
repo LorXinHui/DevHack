@@ -94,3 +94,8 @@ button {
   top: 0;
   z-index: 99; /* A lower z-index to stay behind the navigation bar */
 }
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
