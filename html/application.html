@@ -7,23 +7,10 @@
     <title>Application</title>
 </head>
 <body style = "background-color: #D2C1B1;">
-    <img class = "responsive-image" src="/img/3.png" alt="application banner">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <img class = "responsive-image" src="/img/3.png" alt="welcome banner">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <button type="submit" onclick="document.location='welcome.html'" id="apply">Home</button>
+    <br><br>
     <div class = "card" style = "background-color: antiquewhite;">
         <div class = "container">
             <h3><b>R&D Software Engineer Intern</b></h3>
@@ -40,45 +27,37 @@
                     <li>Explore software project development opportunities including embedded systems, device drivers, programming.</li>
                     <li>Gain exposure to various industry standard practices such as debugging tools, source control (Git), professional code development practices, development process (Agile), interacting with internal user/clients and more.</li>
                 </ul>
-
-                <b>Job Qualification</b>
-                <ul>
-                    <li>Bachelor's Degree in Computer Science, Software Engineering, Information Technology or any related fields</li>
-                    <li>Strong programming skills (C/C++/C#)</li>
-                    <li>Programming for embedded system</li>
-                    <li>Computer system architecture</li>
-                    <li>Object Oriented Programming</li>
-                </ul>
-
-                <button type="submit" onclick="document.location='apply.html'" id="apply">Apply</button>
             </p>
+            <h3><b>Application Status:</b> <span id="status">In progress</span></h3>
+            <button onclick="changeStatus()">Update Status</button>
+            <button id="videobtn" style="display: none">Start Video Interview</button>
         </div>
     </div>
 
-    <br>
+    <script>
+        function getCurrentStatus() {
+            var statusElement = document.getElementById('status');
+            var currentStatus = statusElement.textContent;
+            return currentStatus;
+        }
 
-    <div class = "card" style = "background-color: antiquewhite;">
-        <div class = "container">
-            <h3><b>Software Application Development Graduate Trainee</b></h3>
-            <p>
-                <b>Intel Corporation</b><br>
-                Penang, Malaysia<br>
-                <br>
-                <b>Job Description</b>
-                <br>Create, develop, test, and support factory automation systems that enable Intel to manufacture leading edge semiconductors as part of its TD Analytics and Technology Automation organization. Partner with process technology and manufacturing engineers to create integrated software, metrology, image analysis and material handling systems that improve manufacturing output and productivity for all of Intel's world-wide Substrate, Die Prep, Sort, Assembly, Test and Board manufacturing plants. <br>
-                <br>
+        function changeStatus(currentStatus) {
+            var statuses = ["Pending Video Interview", "Rejected"];
+            var randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
-                <b>Job Qualification</b>
-                <ul>
-                    <li>Masters or Bachelor Degree in Computer Science or Computer Engineering</li>
-                    <li>Strong knowledge in software development</li>
-                    <li>Knowledge of Microsoft development tools Visual Studio, Dot NET, Object Oriented Programming, C Sharp, Microsoft operating systems, and/or software testing methods are highly desired</li>
-                    <li>Strong written and oral communication skills, analytical problem solving skills, teamwork skills and partnership skills</li>
-                    <li>Demonstrate tolerance of ambiguity, self-motivation, versatility and flexibility</li>
-                </ul>
-                <button type="submit" onclick="document.location='apply.html'" id="apply">Apply</button>
-            </p>
-        </div>
-    </div>
+            var statusElement = document.getElementById('status');
+            if(currentStatus === "Rejected"){
+                randomStatus = "Rejected";
+            }
+            statusElement.textContent = randomStatus;
 
+            var videobtn = document.getElementById('videobtn');
+            if (randomStatus === "Pending Video Interview") {
+                videobtn.style.display = "inline-block";
+            } else {
+                videobtn.style.display = "none";
+            }
+        }
+    </script>
 </body>
+</html>
