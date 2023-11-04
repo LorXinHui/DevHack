@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/opening.css">
-    <title>Homepage</title>
+    <title>Job Opening</title>
 </head>
 <body style = "background-color: #D2C1B1;">
     <img class = "responsive-image" src="/img/7.png" alt="opening banner">
@@ -56,16 +56,26 @@
             <label for="qua"><b>Job Qualification</b></label>
             <input type="text" placeholder="Enter Job Qualification" name="qua" required>
         </div>
-        <div class="popup" onclick="myFunction()">
-            <button type="submit" id="opening">Submit</button>
-            <span class="popuptext" id="myPopup">New job opening created</span>
-        </div>
+        
+        <button type="submit" onclick="myFunction()" id="create">Create</button>
+        <div id="snackbar">New Job Opening Posted</div>
     </form>
 
     <script>
         function myFunction(){
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
+            // Get the snackbar DIV
+            var x = document.getElementById("snackbar");
+
+            // Add the "show" class to DIV
+            x.className = "show";
+
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function () {
+            x.className = x.className.replace("show", "");
+
+            // Redirect to another HTML page
+            window.location.href = 'welcome_hr.html'; // Change 'welcome_hr.html' to the desired URL
+            }, 3000);
         }
     </script>
 </body>
