@@ -30,7 +30,7 @@
                 </div>
             </form>
 
-            <button type="submit" onclick="document.location = 'welcome.html'" id="login">Login</button>
+            <button type="submit" onclick="redictToPage()" id="login">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -51,6 +51,15 @@
                        }
                        
                    }
+
+                   function redictToPage(){
+                        var userType = document.getElementById("user-type").value;
+                        if(userType === "hr"){
+                            window.location.href = "welcome_hr.html";
+                        }else if(userType === "emp"){
+                            window.location.href = "welcome.html";
+                        }
+                    }
                  </script>
              </a> 
             <span class="psw"><a href="#">Forgot password?</a></span>
