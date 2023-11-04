@@ -3,11 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/welcome.css">
+    <link rel="stylesheet" href="/css/opening.css">
     <title>Homepage</title>
 </head>
 <body style = "background-color: #D2C1B1;">
-    <img class = "responsive-image" src="/img/4.png" alt="welcome banner">
+    <img class = "responsive-image" src="/img/7.png" alt="opening banner">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    
+    <form action="action_page.php" method="post">
+        <div class="container">
+            <label for="cname"><b>Company Name</b></label>
+            <input type="text" placeholder="Enter Company Name" name="cname" required>
+
+            <label for="cloc"><b>Company Location</b></label>
+            <input type="text" placeholder="Enter Company Location" name="cloc" required>
+
+            <label for="pos"><b>Position</b></label>
+            <input type="text" placeholder="Enter Position Recruiting" name="pos" required>
+
+            <label for="pos-type"><b>Position Category</b></label>
+            <br>
+            <select name="pos-type" id="pos-type">
+                <option disabled selected value> -- select an option -- </option>
+                <option value = "hr">Human Resource/ Talent Acquisition</option>
+                <option value = "design">Designer</option>
+                <option value = "it">Information Technology</option>
+                <option value = "teacher">Teacher</option>
+                <option value = "adv">Advocate</option>
+                <option value = "bd">Business Development</option>
+                <option value = "health">Healthcare</option>
+                <option value = "fit">Fitness</option>
+                <option value = "agr">Agriculture</option>
+                <option value = "bpo">Business Process Outsourcing (BPO)</option>
+                <option value = "sales">Sales</option>
+                <option value = "consult">Consultant</option>
+                <option value = "media">Digital Media</option>
+                <option value = "auto">Automobile</option>
+                <option value = "chef">Chef</option>
+                <option value = "finance">Finance</option>
+                <option value = "app">Apparel</option>
+                <option value = "eng">Engineering</option>
+                <option value = "acc">Accountant</option>
+                <option value = "con">Construction</option>
+                <option value = "pb">Public Relations</option>
+                <option value = "bank">Banking</option>
+                <option value = "art">Arts</option>
+                <option value = "avi">Aviation</option>
+            </select>
+
+            <label for="desc"><b>Job Description</b></label>
+            <input type="text" placeholder="Enter Job Description" name="desc" required>
+
+            <label for="qua"><b>Job Qualification</b></label>
+            <input type="text" placeholder="Enter Job Qualification" name="qua" required>
+        </div>
+        <div class="popup" onclick="myFunction()">
+            <button type="submit" id="opening">Submit</button>
+            <span class="popuptext" id="myPopup">New job opening created</span>
+        </div>
+    </form>
+
+    <script>
+        function myFunction(){
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 </body>
