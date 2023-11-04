@@ -36,7 +36,23 @@
             </label>
             <br>
 
-            <button class = "cancelbtn" onclick="document.location='cancel.html'" id="but">Cancel</button>
+            <a>
+                <b onclick="c()">Back</b>
+                 
+                 <script>
+                   function c(){
+                       var c = confirm("Cancel Login?");
+                       if(c == false){
+                          
+                       }else if (c== true){
+                           window.location.href="cancel.html"
+                       }else{
+                           alert("Cancelled!");
+                       }
+                       
+                   }
+                 </script>
+             </a> 
             <span class="psw"><a href="#">Forgot password?</a></span>
         </div>
     </div> 

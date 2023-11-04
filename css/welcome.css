@@ -13,3 +13,13 @@
 .container {
     padding: 2px 16px;
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
+.responsive-image{
+    max-width: 100%;
+    height: auto;
+    position: fixed;
+}

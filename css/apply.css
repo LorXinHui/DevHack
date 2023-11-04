@@ -1,18 +1,52 @@
 /* Full-width inputs */
-input[type=text], input[type=date] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
+input[type=text], input[type=date], input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-  select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+nav{
+  display: inline;
+}
+
+.responsive-image{
+  max-width: 100%;
+  height: auto;
+  position: fixed;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #6d6156;
+  color: white;
+  padding: 10px 18px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+/* Extra style for the back button (red) */
+.backbtn {
+  background-color: #f44336;
+}
+
+.nextbtn {
+  background-color: #04AA6D;
+}

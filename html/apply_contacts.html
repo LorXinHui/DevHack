@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/apply.css">
+    <title>Apply</title>
+
+    <body style = "background-color: #D2C1B1;">
+        
+        <img class = "responsive-image" src="/img/1.png" alt="banner">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <progress id="progress" value = "50" max = "100" style="width:1456px; height: 50px;">50%</progress>
+
+        <div id="contact">
+            <h1>CONTACT INFORMATION</h1>
+            <form action="action_page.php" method="post">
+                <div class="container">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Enter email" name="email" required>
+
+                    <label for="address"><b>Address</b></label>
+                    <input type="text" placeholder="Enter address" name="address" required>
+
+                    <label for="phone"><b>Contact Number</b></label>
+                    <input type="text" placeholder="Enter contact number" name = "phone" required>
+
+                    <label for="phone2"><b>Secondary Contact Number (if applicable)</b></label>
+                    <input type="text" placeholder="Enter secondary contact number" name="phone2">
+                </div>
+            </form>
+            <button class="nextbtn" type="submit" onclick="document.location='apply_resume.html'" id="next3">Next</button>
+            <button class="backbtn" type="submit" onclick="document.location='apply_details.html'" id="back3">Back</button>
+        </div>
+    </body>
+
+</head>
+</html>
