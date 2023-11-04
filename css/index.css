@@ -1,11 +1,3 @@
-
-
-/* Bordered form */
-/*.container {*/
-    /*border: 3px solid #f1f1f1;*/
-/*}*/
-  
-  
   /* Full-width inputs */
   input[type=text], input[type=password] {
     width: 100%;
@@ -29,11 +21,11 @@
   button {
     background-color: #04AA6D;
     color: white;
-    padding: 14px 20px;
+    padding: 16px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
   }
   
   /* Add a hover effect for buttons */
@@ -71,38 +63,30 @@
     padding-top: 16px;
   }
   
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-    .cancelbtn {
-      width: 100%;
-    }
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
   }
-
-  .pure-u-1-3{
-    width: 550px;
-    height: 650px;
-    float: left;
-    padding-left: 30px;
-    padding-right: 0%;
-  }
-
-  .pure-u-1-4{
-    float: right;
-    padding-right: 20px;
-    padding-left: 0%;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  .cancelbtn {
     width: 100%;
-    /*background-color: #333; /* Add background color if desired */
-    color: black; /* Adjust text color */
-    text-align: center;
-    padding: 10px 0; /* Add padding for better visual separation */
+  }
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /*background-color: #333; /* Add background color if desired */
+  color: black; /* Adjust text color */
+  text-align: center;
+  padding: 10px 0; /* Add padding for better visual separation */
+}
+
+.responsive-image{
+  max-width: 100%;
+  height: auto;
 }
