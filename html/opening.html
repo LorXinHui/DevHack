@@ -55,9 +55,35 @@
 
             <label for="qua"><b>Job Qualification</b></label>
             <input type="text" placeholder="Enter Job Qualification" name="qua" required>
+
+            <label for="q1"><b>Interview Question 1</b></label>
+            <input type="text" placeholder="Enter first interview question" name="q1" required>
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q1-time" id="q1-time" required>
+            <p id="validation-message1"></p>
+
+            <label for="q2"><b>Interview Question 2</b></label>
+            <input type="text" placeholder="Enter second interview question" name="q2">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q2-time" id="q2-time">
+            <p id="validation-message2"></p>
+
+            <label for="q3"><b>Interview Question 3</b></label>
+            <input type="text" placeholder="Enter third interview question" name="q3">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q3-time" id="q3-time">
+            <p id="validation-message3"></p>
+
+            <label for="q4"><b>Interview Question 4</b></label>
+            <input type="text" placeholder="Enter fourth interview question" name="q4">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q4-time" id="q4-time">
+            <p id="validation-message4"></p>
+
+            <label for="q5"><b>Interview Question 5</b></label>
+            <input type="text" placeholder="Enter fifth interview question" name="q5">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q5-time" id="q5-time">
+            <p id="validation-message5"></p>
         </div>
+
         
-        <button type="submit" onclick="myFunction()" id="create">Create</button>
+        <button type="button" onclick="validateAndSubmit()" id="create">Create</button>
         <div id="snackbar">New Job Opening Posted</div>
     </form>
 
@@ -76,6 +102,31 @@
             // Redirect to another HTML page
             window.location.href = 'welcome_hr.html'; // Change 'welcome_hr.html' to the desired URL
             }, 3000);
+        }
+
+        function validateAndSubmit() {
+            let isValid = true;
+
+            for (let i = 1; i <= 5; i++) {
+                const timeInput = document.getElementById(`q${i}-time`);
+                const validationMessage = document.getElementById(`validation-message${i}`);
+                const input = timeInput.value;
+                const timeRegex = /^(\d+)\s*minutes?\s*(\d+)?\s*seconds?$/i;
+
+                if (input !== '' && !timeRegex.test(input)) {
+                    // Input does not match the expected format
+                    isValid = false;
+                    validationMessage.textContent = `Invalid time duration for Interview Question ${i}. Please use a format like '2 minutes 30 seconds'.`;
+                } else {
+                    validationMessage.textContent = ''; // Clear any previous error message
+                }
+            }
+
+            if (isValid) {
+                // All time inputs are valid; you can proceed with form submission
+                // Your existing code here
+                myFunction();
+            }
         }
     </script>
 </body>
