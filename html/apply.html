@@ -3,7 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/welcome.css">
+    <link rel="stylesheet" href="/css/apply.css">
     <title>Application</title>
+
+    <body style = "background-color: #D2C1B1;">
+        <img src="/img/1.png" alt="banner" style="width: 1456px; padding-left: 0px" >
+
+        <progress id="progress" value = "0" max = "100" style="width:1456px; height: 50px;">0%</progress>
+
+        <div id = "privacy">
+            <h1>PRIVACY DECLARATION</h1>
+            <p>
+            By proceeding with this application, I confirm that I have read and understood the <a href="#">privacy collection statement</a> which will apply to any personal information that I submit in my application. 
+            <br>
+            For more information about Data Protection and Privacy please see our <a href="#">Data Protection and Privacy Procedure</a>. 
+            </p>
+            <a href="#personal">
+                <button>Next</button>
+            </a>
+        </div>
+        
+
+        <div id = "personal">
+            <h1>PERSONAL DETAILS</h1>
+            <form action="action_page.php" method="post">
+                <div class="container">
+                    <label for="gname"><b>Legal given name(s)</b></label>
+                    <input type="text" placeholder="Enter given name" name="gname" required>
+                
+                    <label for="lname"><b>Legal last name</b></label>
+                    <input type="text" placeholder="Enter last/ family name" name="lname" required>
+
+                    <label for="pname"><b>Preferred name (if applicable)</b></label>
+                    <input type="text" placeholder="Enter preferred name (if applicable)" name="pname">
+
+                    <label for="bdate"><b>Birthdate</b></label>
+                    <input type="date" placeholder="Enter Birthdate (dd/mm/yyyy)" name="bdate" required>
+
+                    <label for="bcountry"><b>Country of Birth</b></label>
+                    <input type="text" placeholder="Enter birth country" name="bcountry" required>
+
+                    <label for="rcountry"><b>Country of Residence</b></label>
+                    <input type="text" placeholder="Enter current resident country" name="rcountry" required>
+                    
+                    <label for="gender"><b>Gender</b></label>
+                    <br>
+                    <select name="gender" id="gender">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value = "male">Male</option>
+                        <option value = "female">Female</option>
+                        <option value = "binary">Prefer not to say</option>
+                    </select>    
+
+                    <label for="pronoun"><b>Pronoun</b></label>
+                    <br>
+                    <select name="pronoun" id="pronoun">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value = "he">He/Him/His </option>
+                        <option value = "she">She/Her/Hers</option>
+                        <option value = "they">They/Them/Theirs</option>
+                        <option value = "null">Prefer not to say</option>
+                    </select> 
+                </div>
+            </form>
+            <a href="#personal">NEXT</a>
+        </div>
+    </body>
+
 </head>
 </html>
