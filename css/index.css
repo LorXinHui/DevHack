@@ -6,6 +6,7 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
   }
 
   select {
@@ -15,6 +16,7 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* Set a style for all buttons */
@@ -26,6 +28,7 @@
     border: none;
     cursor: pointer;
     width: auto;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* Add a hover effect for buttons */
@@ -54,6 +57,7 @@
   /* Add padding to containers */
   .container {
     padding: 16px;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* The "Forgot password" text */
@@ -82,11 +86,13 @@
     color: black; /* Adjust text color */
     text-align: center;
     padding: 10px 0; /* Add padding for better visual separation */
+    font-family: 'Poppins', sans-serif;
   }
 
   .responsive-image{
     max-width: 100%;
     height: auto;
   }
+
 
   
