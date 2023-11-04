@@ -26,21 +26,24 @@
                         <option disabled selected value> -- select an option -- </option>
                         <option value = "hr">Human Resource/ Talent Acquisition</option>
                         <option value = "emp">Job Seeker</option>
-                    </select>
-                
-                    <button type="submit">Login</button>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
+                    </select>    
                 </div>
             </form>
-            <button onclick="document.location='cancel.html'" id="but">Cancel</button>
+
+            <button type="submit" onclick="document.location = 'welcome.html'" id="login">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <br>
+
+            <button class = "cancelbtn" onclick="document.location='cancel.html'" id="but">Cancel</button>
             <span class="psw"><a href="#">Forgot password?</a></span>
         </div>
     </div> 
 
     <footer>
         <p>&copy; DevHack_MacNCheeseSoExpensiv   All rights reserved.</p>
-    </footer>                
+    </footer>
+                   
 </body>
 </html>
