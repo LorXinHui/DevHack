@@ -45,11 +45,13 @@ button {
 .backbtn {
   background-color: #e1d6c7;
   color: #594d40;
+  float: left;
 }
 
 .nextbtn {
   background-color: #594d40;
   color: #e1d6c7;
+  float: right;
 }
 
 /* Change the background color to match your color scheme */

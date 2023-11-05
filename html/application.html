@@ -40,7 +40,7 @@
             </p>
             <h3><b>Application Status:</b> <span id="status">In progress</span></h3>
             <button onclick="changeStatus()">Update Status</button>
-            <button id="videobtn" style="display: none">Start Video Interview</button>
+            <button id="videobtn" style="display: none" onclick="document.location = 'video_interview1.html'">Start Video Interview</button>
         </div>
     </div>
 
@@ -57,9 +57,10 @@
 
             var statusElement = document.getElementById('status');
             if(currentStatus === "Rejected"){
-                randomStatus = "Rejected";
+                statusElement.textContent = "Rejected";
+            } else {
+                statusElement.textContent = randomStatus;
             }
-            statusElement.textContent = randomStatus;
 
             var videobtn = document.getElementById('videobtn');
             if (randomStatus === "Pending Video Interview") {

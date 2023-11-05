@@ -1,0 +1,85 @@
+/* Set a style for all buttons */
+button {
+    background-color: #594d40;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+}
+
+/* Extra style for the back button (red) */
+.backbtn {
+    background-color: #e1d6c7;
+    color: #594d40;
+    float: left;
+}
+  
+.nextbtn {
+    background-color: #594d40;
+    color: #e1d6c7;
+    float: right;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+}
+
+.responsive-image{
+    max-width: 100%;
+    height: auto;
+}
+
+/* Change the background color to match your color scheme */
+.topnav {
+    position: sticky;
+    top: 0;
+    background-color: #D2C1B1; /* Your desired background color */
+    overflow: hidden;
+    z-index: 100; /* Ensures it's on top of other content */
+}
+  
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #594D40; /* Deeper earthy tone from the color palette */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #E1D6C7; /* Lighter, muted color from the palette */
+    color: #594D40; /* Deeper earthy tone for contrast */
+}
+  
+/* Add an active class to highlight the current page */
+  .topnav a.active {
+    background-color: #594D40;
+    color: white;
+}
+  
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}  
+  
+.sticky-banner {
+    position: sticky;
+    top: 0;
+    z-index: 99; /* A lower z-index to stay behind the navigation bar */
+}
