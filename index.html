@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/DevHack/css/index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 <body style = "background-color: #D2C1B1; font-family: 'Poppins', sans-serif;" >
     <div class = "pure-g">
         <div class = "pure-u-1-2">
-            <img class = "responsive-image" src = "/img/5.png" alt = "img">
+            <img class = "responsive-image" src = "/DevHack/img/5.png" alt = "img">
         </div>
         <div class = "pure-u-1-2">
             <form action="action_page.php" method="post">
@@ -54,7 +54,7 @@
                        if(c == false){
                           
                        }else if (c== true){
-                           window.location.href="/html/cancel.html"
+                           window.location.href="/DevHack/html/cancel.html"
                        }else{
                            alert("Cancelled!");
                        }
@@ -64,9 +64,9 @@
                    function redictToPage(){
                         var userType = document.getElementById("user-type").value;
                         if(userType === "hr"){
-                            window.location.href = "/html/welcome_hr.html";
+                            window.location.href = "/DevHack/html/welcome_hr.html";
                         }else if(userType === "emp"){
-                            window.location.href = "/html/welcome.html";
+                            window.location.href = "/DevHack/html/welcome.html";
                         }
                     }
                 </script>
