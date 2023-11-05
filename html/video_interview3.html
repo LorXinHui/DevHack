@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
-    <link rel="stylesheet" href="/css/interview.css">
+    <link rel="stylesheet" href="/DevHack/css/interview.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,14 +16,14 @@
     
 <body style = "background-color: #f4eae1; font-family: 'Poppins', sans-serif;">
     <div class="topnav" id="myTopnav">
-        <a href="/html/video_interview1.html">Question 1</a>
-        <a href="/html/video_interview2.html">Question 2</a>
-        <a href="/html/video_interview3.html"  class = "active">Question 3</a>
+        <a href="/DevHack/html/video_interview1.html">Question 1</a>
+        <a href="/DevHack/html/video_interview2.html">Question 2</a>
+        <a href="/DevHack/html/video_interview3.html"  class = "active">Question 3</a>
         <a href="#video_submission">Video Submission</a>
-        <a href="/html/Welcome.html" class = "split">Home</a>
+        <a href="/DevHack/html/Welcome.html" class = "split">Home</a>
     </div>
     
-    <img class = "responsive-image" src="/img/8.png" alt="interview banner">
+    <img class = "responsive-image" src="/DevHack/img/8.png" alt="interview banner">
 
     <div class = "pure-g">
         <div class = "pure-u-3-4">
@@ -43,7 +43,7 @@
                 <button id="stop-record">Stop Recording</button><br>
                 <a id="download-video" download="question3">Download Video</a>
                 <br>
-                <button class="backbtn" type="submit" onclick="document.location='video_interview3.html'" id="back_i3">Back</button>
+                <button class="backbtn" type="submit" onclick="document.location='/DevHack/html/video_interview3.html'" id="back_i3">Back</button>
                 <a href="#video_submission"><button class="nextbtn" type="submit" id="next_i3">Next</button></a>
                 
             </div>
@@ -70,7 +70,7 @@
                 <input type="file" id="question3" name="question3">
             </form>
 
-            <button type="submit" id="submit_video" onclick="document.location='application.html'">Submit</button>
+            <button type="submit" id="submit_video" onclick="document.location='/DevHack/html/application.html'">Submit</button>
         </div>
     </div>
     
@@ -116,7 +116,7 @@
 
         document.getElementById("submit_video").addEventListener("click", function() {
             // Set video_interview status to true
-            var url = new URL("/html/application.html", window.location.href);
+            var url = new URL("/DevHack/html/application.html", window.location.href);
             url.searchParams.set("video_interview", "true");
             window.location.href = url.href;
         });
