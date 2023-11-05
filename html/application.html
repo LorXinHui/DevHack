@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/welcome.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Application</title>
+</head>
+<body style = "background-color: #f4eae1; font-family: 'Poppins', sans-serif;">
+    <div class="topnav" id="myTopnav">
+        <a href="/html/Welcome.html">Home</a>
+        <a href="/html/application.html" class="active">My Application</a>
+        <a href="/html/index.html" class = "split">Log out</a>
+    </div>
+    <div class="sticky-banner">
+        <img class = "responsive-image" src="/img/3.png" alt="application banner">
+    </div>
+    <br>
+    <div class = "card">
+        <div class = "container">
+            <h3><b>R&D Software Engineer Intern</b></h3>
+            <p>
+                <b>Keysight Technologies</b><br>
+                Penang, Malaysia<br>
+                <br>
+                <b>Job Description</b>
+                <br>At Keysight, we help companies address their toughest challenges with precision and confidence. We offer the most precise electronic measurement tools in the industry, with advanced software to match. Our employees leverage their insight and passion to revolutionize electronic measurement and make a difference in the world.
+                <br>As an R&D Software intern you will be responsible but not limited to the following:
+
+                <ul>
+                    <li>Research many aspects of software development life cycle.</li>
+                    <li>Explore software project development opportunities including embedded systems, device drivers, programming.</li>
+                    <li>Gain exposure to various industry standard practices such as debugging tools, source control (Git), professional code development practices, development process (Agile), interacting with internal user/clients and more.</li>
+                </ul>
+            </p>
+            <h3><b>Application Status:</b> <span id="status">In progress</span></h3>
+            <button onclick="changeStatus()">Update Status</button>
+            <button id="videobtn" style="display: none" onclick="document.location = 'video_interview1.html'">Start Video Interview</button>
+        </div>
+    </div>
+
+    <script>
+        var video_interview = false;
+        var rejected = false;
+        var completed_interview = false;
+
+        function getCurrentStatus() {
+            var statusElement = document.getElementById('status');
+            var currentStatus = statusElement.textContent;
+            return currentStatus;
+        }
+
+        function changeStatus(){
+            var statuses = ["Accepted", "Rejected"];
+            var randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+            var statusElement = document.getElementById('status');
+            var videobtn = document.getElementById('videobtn');
+
+            if(rejected === true){
+                statusElement.textContent = "Rejected";
+            }else if(video_interview === false){
+                statusElement.textContent = "Pending Video Interview";
+                videobtn.style.display = "inline-block";
+            } else if(video_interview === true && completed_interview === false){
+                statusElement.textContent = "Completed Video Interview";
+                videobtn.style.display = "none";
+                completed_interview = true;
+            } else if(video_interview === true && completed_interview === true){
+                statusElement.textContent = randomStatus;
+                if(randomStatus === "Rejected"){
+                    rejected = true;
+                }
+            }
+        }
+
+        // Function to get query parameter value from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Read the query parameter and set the video_interview variable
+        var video_interview = getQueryParam("video_interview") === "true";
+    </script>
+</body>
+</html>

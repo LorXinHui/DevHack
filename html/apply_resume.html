@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/apply.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Apply</title>
+
+    <body style = "background-color: #f4eae1; font-family: 'Poppins', sans-serif;">
+        <div class="topnav" id="myTopnav">
+            <a href="/html/apply.html">Privacy Declaration</a>
+            <a href="/html/apply_details.html">Personal Details</a>
+            <a href="/html/apply_contacts.html">Contact Information</a>
+            <a href="/html/apply_resume.html" class = "active">Resume Submission</a>
+            <a href="/html/Welcome.html" class = "split">Home</a>
+        </div>
+        <div class="sticky-banner">
+            <img class = "responsive-image" src="/img/1.png" alt="apply banner">
+        </div>
+        <br>
+        <progress id="progress" value = "75" max = "100" style="width:100%; height: 50px;">75%</progress>
+
+        <div id="resume">
+            <h1>UPLOAD YOUR RESUME</h1>
+            <form action="/action_page.php">
+                <input type="file" id="myFile" name="filename">
+            </form>
+            <button type="submit" id="submit">Submit</button>
+            <br>
+            
+            <button class="backbtn" type="submit" onclick="document.location='apply_details.html'" id="back4">Back</button>
+            <button class="nextbtn" type="submit" onclick="document.location='application.html'" id="next4">Next</button>
+        </div>
+    </body>
+
+</head>
+</html>

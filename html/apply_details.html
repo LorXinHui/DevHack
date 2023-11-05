@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/apply.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Application</title>
+
+    <body style = "background-color: #f4eae1; font-family: 'Poppins', sans-serif;">
+        <div class="topnav" id="myTopnav">
+            <a href="/html/apply.html">Privacy Declaration</a>
+            <a href="/html/apply_details.html" class = "active">Personal Details</a>
+            <a href="/html/apply_contacts.html">Contact Information</a>
+            <a href="/html/apply_resume.html">Resume Submission</a>
+            <a href="/html/Welcome.html" class = "split">Home</a>
+        </div>
+        <div class="sticky-banner">
+            <img class = "responsive-image" src="/img/1.png" alt="apply banner">
+        </div>
+        <br>
+        <progress id="progress" value = "25" max = "100" style="width:100%; height: 50px;">25%</progress>
+
+        <div id = "personal">
+            <h1>PERSONAL DETAILS</h1>
+            <form action="action_page.php" method="post">
+                <div class="container">
+                    <label for="gname"><b>Legal given name(s)</b></label>
+                    <input type="text" placeholder="Enter given name" name="gname" required>
+                
+                    <label for="lname"><b>Legal last name</b></label>
+                    <input type="text" placeholder="Enter last/ family name" name="lname" required>
+
+                    <label for="pname"><b>Preferred name (if applicable)</b></label>
+                    <input type="text" placeholder="Enter preferred name (if applicable)" name="pname">
+
+                    <label for="bdate"><b>Birthdate</b></label>
+                    <input type="date" placeholder="Enter Birthdate (dd/mm/yyyy)" name="bdate" required>
+
+                    <label for="bcountry"><b>Country of Birth</b></label>
+                    <input type="text" placeholder="Enter birth country" name="bcountry" required>
+
+                    <label for="rcountry"><b>Country of Residence</b></label>
+                    <input type="text" placeholder="Enter current resident country" name="rcountry" required>
+                    
+                    <label for="gender"><b>Gender</b></label>
+                    <br>
+                    <select name="gender" id="gender">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value = "male">Male</option>
+                        <option value = "female">Female</option>
+                        <option value = "binary">Prefer not to say</option>
+                    </select>    
+
+                    <label for="pronoun"><b>Pronoun</b></label>
+                    <br>
+                    <select name="pronoun" id="pronoun">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value = "he">He/Him/His </option>
+                        <option value = "she">She/Her/Hers</option>
+                        <option value = "they">They/Them/Theirs</option>
+                        <option value = "null">Prefer not to say</option>
+                    </select> 
+                </div>
+            </form>
+            
+            <button class="backbtn" type="submit" onclick="document.location='apply.html'" id="back2">Back</button>
+            <button class="nextbtn" type="submit" onclick="document.location='apply_contacts.html'" id="next2">Next</button>
+        </div>
+    </body>
+
+</head>
+</html>

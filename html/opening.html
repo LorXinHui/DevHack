@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/opening.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Job Opening</title>
+</head>
+<body style = "background-color: #f4eae1; font-family: 'Poppins', sans-serif;">
+    <div class="topnav" id="myTopnav">
+        <a href="/html/welcome_hr.html">Home</a>
+        <a href="/html/opening.html" class="active">Create New Opening</a>
+        <a href="/html/index.html" class = "split">Log out</a>
+    </div>
+    <div class="sticky-banner">
+        <img class = "responsive-image" src="/img/7.png" alt="welcome banner">
+    </div>
+    <br>
+    <form action="action_page.php" method="post">
+        <div class="container">
+            <label for="cname"><b>Company Name</b></label>
+            <input type="text" placeholder="Enter Company Name" name="cname" required>
+
+            <label for="cloc"><b>Company Location</b></label>
+            <input type="text" placeholder="Enter Company Location" name="cloc" required>
+
+            <label for="pos"><b>Position</b></label>
+            <input type="text" placeholder="Enter Position Recruiting" name="pos" required>
+
+            <label for="pos-type"><b>Position Category</b></label>
+            <br>
+            <select name="pos-type" id="pos-type">
+                <option disabled selected value> -- select an option -- </option>
+                <option value = "hr">Human Resource/ Talent Acquisition</option>
+                <option value = "design">Designer</option>
+                <option value = "it">Information Technology</option>
+                <option value = "teacher">Teacher</option>
+                <option value = "adv">Advocate</option>
+                <option value = "bd">Business Development</option>
+                <option value = "health">Healthcare</option>
+                <option value = "fit">Fitness</option>
+                <option value = "agr">Agriculture</option>
+                <option value = "bpo">Business Process Outsourcing (BPO)</option>
+                <option value = "sales">Sales</option>
+                <option value = "consult">Consultant</option>
+                <option value = "media">Digital Media</option>
+                <option value = "auto">Automobile</option>
+                <option value = "chef">Chef</option>
+                <option value = "finance">Finance</option>
+                <option value = "app">Apparel</option>
+                <option value = "eng">Engineering</option>
+                <option value = "acc">Accountant</option>
+                <option value = "con">Construction</option>
+                <option value = "pb">Public Relations</option>
+                <option value = "bank">Banking</option>
+                <option value = "art">Arts</option>
+                <option value = "avi">Aviation</option>
+            </select>
+
+            <label for="desc"><b>Job Description</b></label>
+            <input type="text" placeholder="Enter Job Description" name="desc" required>
+
+            <label for="qua"><b>Job Qualification</b></label>
+            <input type="text" placeholder="Enter Job Qualification" name="qua" required>
+
+            <label for="q1"><b>Interview Question 1</b></label>
+            <input type="text" placeholder="Enter first interview question" name="q1" required>
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q1-time" id="q1-time" required>
+            <p id="validation-message1"></p>
+
+            <label for="q2"><b>Interview Question 2</b></label>
+            <input type="text" placeholder="Enter second interview question" name="q2">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q2-time" id="q2-time">
+            <p id="validation-message2"></p>
+
+            <label for="q3"><b>Interview Question 3</b></label>
+            <input type="text" placeholder="Enter third interview question" name="q3">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q3-time" id="q3-time">
+            <p id="validation-message3"></p>
+
+            <label for="q4"><b>Interview Question 4</b></label>
+            <input type="text" placeholder="Enter fourth interview question" name="q4">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q4-time" id="q4-time">
+            <p id="validation-message4"></p>
+
+            <label for="q5"><b>Interview Question 5</b></label>
+            <input type="text" placeholder="Enter fifth interview question" name="q5">
+            <input type="text" placeholder="Time duration expected for the interview question (e.g., 2 minutes 30 seconds)" name="q5-time" id="q5-time">
+            <p id="validation-message5"></p>
+        </div>
+
+        
+        <button type="button" onclick="validateAndSubmit()" id="create">Create</button>
+        <div id="snackbar">New Job Opening Posted</div>
+    </form>
+
+    <script>
+        function myFunction(){
+            // Get the snackbar DIV
+            var x = document.getElementById("snackbar");
+
+            // Add the "show" class to DIV
+            x.className = "show";
+
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function () {
+            x.className = x.className.replace("show", "");
+
+            // Redirect to another HTML page
+            window.location.href = 'welcome_hr.html'; // Change 'welcome_hr.html' to the desired URL
+            }, 3000);
+        }
+
+        function validateAndSubmit() {
+            let isValid = true;
+
+            for (let i = 1; i <= 5; i++) {
+                const timeInput = document.getElementById(`q${i}-time`);
+                const validationMessage = document.getElementById(`validation-message${i}`);
+                const input = timeInput.value;
+                const timeRegex = /^(\d+)\s*minutes?\s*(\d+)?\s*seconds?$/i;
+
+                if (input !== '' && !timeRegex.test(input)) {
+                    // Input does not match the expected format
+                    isValid = false;
+                    validationMessage.textContent = `Invalid time duration for Interview Question ${i}. Please use a format like '2 minutes 30 seconds'.`;
+                } else {
+                    validationMessage.textContent = ''; // Clear any previous error message
+                }
+            }
+
+            if (isValid) {
+                // All time inputs are valid; you can proceed with form submission
+                // Your existing code here
+                myFunction();
+            }
+        }
+    </script>
+</body>
