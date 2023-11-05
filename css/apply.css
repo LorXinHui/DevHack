@@ -39,6 +39,7 @@ button {
   border: none;
   cursor: pointer;
   width: auto;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Extra style for the back button (red) */
@@ -100,4 +101,11 @@ button {
 /* Add some padding inside the card container */
 .container {
   padding: 2px 16px;
+}
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.topnav a.split {
+  float: right;
+  background-color: #594D40;
+  color: white;
 }

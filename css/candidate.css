@@ -17,7 +17,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     text-align: center;
-    background-color: #f4eae1;
+    background-color: #E1D6C7;
 }
   
 /* Add rounded corners to the top left and the top right corner of the image */
@@ -53,6 +53,7 @@ button {
     border: none;
     cursor: pointer;
     width: auto;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Change the background color to match your color scheme */
@@ -96,4 +97,11 @@ button {
     position: sticky;
     top: 0;
     z-index: 99; /* A lower z-index to stay behind the navigation bar */
-  }
+}
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.topnav a.split {
+    float: right;
+    background-color: #594D40;
+    color: white;
+}

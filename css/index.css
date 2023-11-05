@@ -6,7 +6,6 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
   }
 
   select {
@@ -16,7 +15,6 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
   }
   
   /* Set a style for all buttons */

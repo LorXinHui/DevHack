@@ -2,7 +2,7 @@
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color: #f4eae1;
+    background-color: #E1D6C7;
 }
   
 /* On mouse-over, add a deeper shadow */
@@ -33,6 +33,7 @@ button {
     border: none;
     cursor: pointer;
     width: auto;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Change the background color to match your color scheme */
@@ -76,4 +77,11 @@ button {
     position: sticky;
     top: 0;
     z-index: 99; /* A lower z-index to stay behind the navigation bar */
+}
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.topnav a.split {
+    float: right;
+    background-color: #594D40;
+    color: white;
 }
