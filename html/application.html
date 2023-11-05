@@ -45,30 +45,48 @@
     </div>
 
     <script>
+        var video_interview = false;
+        var rejected = false;
+        var completed_interview = false;
+
         function getCurrentStatus() {
             var statusElement = document.getElementById('status');
             var currentStatus = statusElement.textContent;
             return currentStatus;
         }
 
-        function changeStatus(currentStatus) {
-            var statuses = ["Pending Video Interview", "Rejected"];
+        function changeStatus(){
+            var statuses = ["Accepted", "Rejected"];
             var randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
             var statusElement = document.getElementById('status');
-            if(currentStatus === "Rejected"){
-                statusElement.textContent = "Rejected";
-            } else {
-                statusElement.textContent = randomStatus;
-            }
-
             var videobtn = document.getElementById('videobtn');
-            if (randomStatus === "Pending Video Interview") {
+
+            if(rejected === true){
+                statusElement.textContent = "Rejected";
+            }else if(video_interview === false){
+                statusElement.textContent = "Pending Video Interview";
                 videobtn.style.display = "inline-block";
-            } else {
+            } else if(video_interview === true && completed_interview === false){
+                statusElement.textContent = "Completed Video Interview";
                 videobtn.style.display = "none";
+                completed_interview = true;
+            } else if(video_interview === true && completed_interview === true){
+                statusElement.textContent = randomStatus;
+                if(randomStatus === "Rejected"){
+                    rejected = true;
+                }
             }
         }
+
+        // Function to get query parameter value from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Read the query parameter and set the video_interview variable
+        var video_interview = getQueryParam("video_interview") === "true";
     </script>
 </body>
 </html>

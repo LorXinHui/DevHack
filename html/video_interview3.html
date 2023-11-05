@@ -19,6 +19,7 @@
         <a href="/html/video_interview1.html">Question 1</a>
         <a href="/html/video_interview2.html">Question 2</a>
         <a href="/html/video_interview3.html"  class = "active">Question 3</a>
+        <a href="#video_submission">Video Submission</a>
         <a href="/html/Welcome.html" class = "split">Home</a>
     </div>
     
@@ -43,8 +44,32 @@
                 <a id="download-video" download="question3">Download Video</a>
                 <br>
                 <button class="backbtn" type="submit" onclick="document.location='video_interview3.html'" id="back_i3">Back</button>
-                <button class="nextbtn" type="submit" onclick="document.location='application.html'" id="next_i3">Next</button>
+                <button class="nextbtn" type="submit" onclick="document.location='video_submission'" id="next_i3">Next</button>
             </div>
+        </div>
+    </div>
+
+    <div class = "pure-g">
+        <div class = "pure-u-1 container" id = "video_submission" >
+            <center><h1 style="font-family: 'Poppins', sans-serif;">That is the end of your online interview. <br> Thank you!</h1></center>
+            <center><h2 style="font-family: 'Poppins', sans-serif;">Please submit the video recording for your interview below.</h2></center>
+
+            <form action="/action_page.php">
+                <p>Question 1:</p>
+                <input type="file" id="question1" name="question1">
+            </form>
+            <br>
+            <form action="/action_page.php">
+                <p>Question 2:</p>
+                <input type="file" id="question2" name="question2">
+            </form>
+            <br>
+            <form action="/action_page.php">
+                <p>Question 3:</p>
+                <input type="file" id="question3" name="question3">
+            </form>
+
+            <button type="submit" id="submit_video" onclick="document.location='application.html'">Submit</button>
         </div>
     </div>
     
@@ -86,6 +111,13 @@
 
         stop_button.addEventListener('click', function() {
             media_recorder.stop(); 
+        });
+
+        document.getElementById("submit_video").addEventListener("click", function() {
+            // Set video_interview status to true
+            var url = new URL("/html/application.html", window.location.href);
+            url.searchParams.set("video_interview", "true");
+            window.location.href = url.href;
         });
     </script>
 </body>
