@@ -73,6 +73,6 @@ def predict_class(resume_path):
 
 
 if __name__ == "__main__":
-    path = 'C:/Clubs and Society/DevHack/DevHack/dataset/data/data/ENGINEERING/17108676.pdf'
+    path = 'C:/Clubs and Society/DevHack/DevHack/dataset/data/data/BUSINESS-DEVELOPMENT/10228751.pdf'
     print(predict_class(path))
 # End-of-file (EOF)
