@@ -34,9 +34,32 @@ def preprocess_resume(paragraph):
 
 
 category_model = tf.saved_model.load('./category_model')
-# Load the LabelEncoder
-with open('label_encoder.pkl', 'rb') as le_file:
-    label_encoder = pickle.load(le_file)
+class_mapping = {
+    'HR': 0,
+    'DESIGNER': 1,
+    'INFORMATION-TECHNOLOGY': 2,
+    'TEACHER': 3,
+    'ADVOCATE': 4,
+    'BUSINESS-DEVELOPMENT': 5,
+    'HEALTHCARE': 6,
+    'FITNESS': 7,
+    'AGRICULTURE': 8,
+    'BPO': 9,
+    'SALES': 10,
+    'CONSULTANT': 11,
+    'DIGITAL-MEDIA': 12,
+    'AUTOMOBILE': 13,
+    'CHEF': 14,
+    'FINANCE': 15,
+    'APPAREL': 16,
+    'ENGINEERING': 17,
+    'ACCOUNTANT': 18,
+    'CONSTRUCTION': 19,
+    'PUBLIC-RELATIONS': 20,
+    'BANKING': 21,
+    'ARTS': 22,
+    'AVIATION': 23
+}
 
 
 def predict_class(resume_path):
@@ -44,8 +67,9 @@ def predict_class(resume_path):
     cleaned_resume = preprocess_resume(resume_text)
     predictions = category_model(tf.constant([cleaned_resume]))
     predicted_class = tf.argmax(predictions[0]).numpy()
-    category = label_encoder.inverse_transform([predicted_class])
-    return category
+    # Reverse the mapping to get the class name from the numeric value
+    class_name = next(key for key, value in class_mapping.items() if value == predicted_class)
+    return class_name
 
 
 if __name__ == "__main__":
