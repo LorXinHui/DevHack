@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>TalentSync Hub</title>
+</head>
+
+<body>
+    <div class = "container">
+        <form action = "#" method = "GET" enctype = "multipart/form-data" onsubmit = "return checkUser()">
+            <label for = "name"><b>Full Name</b></label>
+            <input type = "text" placeholder="Enter Full Name" name = "name" id = "name" required>
+            <br>
+
+            <label for = "pwd"><b>Password</b></label>
+            <input type = "password" placeholder = "Enter Password" name = "pwd" id = "pwd" required>
+            <br>
+
+            <input type = "submit" value = "Sign In" class = "btn btn-primary">
+        </form>
+    </div>
+
+    <div class = "container">
+        <text>New to Talent Sync? </text>
+        <b onclick = "sign_in()">Sign In Here</b>
+    </div>
+
+    <div id = "message"></div>
+
+    <script>
+        function fetchUserData(username) {
+            fetch(`/sign_in/${username}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Process the retrieved user data here
+                if (data.user) {
+                    // Check if the password entered is correct
+                    var pwd = $("#pwd").val();
+                    if(pwd === data.user.pwd){
+                        // Redirect to another page
+                        window.location.href = '/home';
+                    } else {
+                        $("#message").html("Invalid Password");
+                    }
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        
+        function checkUser(){
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const name_key = name.replace(/\s+/g, '_');
+            fetchUserData(name_key);
+        }
+
+        function sign_in(){
+            window.location.href = '/signup';
+        }
+    </script>
+</body>
+</html>
