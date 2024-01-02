@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask import render_template
-from flask import session, redirect, url_for
+from flask import session, redirect, url_for, flash
 import firebase_admin
 from firebase_admin import credentials, db, storage
 
@@ -27,6 +27,7 @@ def signin(username):
     user_data = user_ref.get()
 
     if user_data:
+        session['username'] = user_data.get('name')
         return jsonify({"user": user_data})
     else:
         return jsonify({"error": "User not found"}), 404
@@ -57,14 +58,28 @@ def signup():
         'pwd': data.get('pwd'),
         'userType': data.get('userType')
     })
-    
     return jsonify({"message": "Data stored successfully", "user_id": name_key})
 
 
 @app.route('/home')
+def home(username=None):
+    # Check if the user is signed in
+    if 'username' not in session:
+        flash('Please sign in first', 'error')
+        return redirect(url_for('sign_in'))
+
+    # Get the username from the session
+    current_username = session['username']
+
+    # If a specific username is provided in the URL, use that, otherwise use the one from the session
+    username_to_display = username or current_username
+
+    # Render the home template with the username
+    return render_template('index_emp.html', username=username_to_display)
+
+@app.route('/resume')
 def resume_submission():
     return render_template('resume_submission.html')
-
 
 if __name__ == "__main__":
     app.run(debug=True)
