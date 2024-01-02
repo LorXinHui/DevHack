@@ -49,7 +49,7 @@
             // Make an AJAX request to your Flask route
             $.ajax({
                 type: "POST",
-                url: "/signup",  // Update this with your actual Flask route for sign-up
+                url: "/sign_up",  // Update this with your actual Flask route for sign-up
                 contentType: "application/json;charset=UTF-8",
                 data: JSON.stringify({ "name": name, "pwd": pwd, "userType": userType }),
                 success: function(response) {

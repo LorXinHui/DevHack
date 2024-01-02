@@ -21,6 +21,7 @@ def sign_up():
 @app.route('/sign_up', methods = ['POST'])
 def signup():
     data = request.get_json()
+    print("Received data:", data)
 
     #Extract the name and replace any empty characters
     name = data.get('name')
@@ -35,7 +36,7 @@ def signup():
         return jsonify({"error": "User already exists with the same name"})
 
     #Store user data
-    new_user_ref = users_ref.set({
+    new_user_ref = users_ref.push({
         'name': name,
         'pwd': data.get('pwd'),
         'userType': data.get('userType')
