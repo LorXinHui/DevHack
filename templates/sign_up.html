@@ -32,19 +32,12 @@
         </form>
     </div>
 
-    <!-- Display area for user input -->
-    <div id="userInputDisplay"></div>
-
     <script>
         function printUserInput() {
             // Retrieve form data
             const name = document.getElementById('name').value;
             var pwd = $("#pwd").val();
             var userType = $("#user-type").val();
-
-            // Display user input
-            var displayText = "Full Name: " + name + "<br>Password: " + pwd + "<br>User Type: " + userType;
-            $("#userInputDisplay").html(displayText);
 
             // Make an AJAX request to your Flask route
             $.ajax({
@@ -54,6 +47,7 @@
                 data: JSON.stringify({ "name": name, "pwd": pwd, "userType": userType }),
                 success: function(response) {
                     console.log(response);
+                    window.location.href = '/';
                 },
                 error: function(error) {
                     console.error(error);
