@@ -70,12 +70,29 @@ def home(username=None):
 
     # Get the username from the session
     current_username = session['username']
+    name_key = current_username.replace(' ', '_')
+    
+    # Create a reference to the 'users' node in the database
+    users_ref = db.reference('users')
+
+    # Create a reference to the specific user using the provided username
+    user_ref = users_ref.child(name_key)
+
+    # Retrieve the user data
+    user_data = user_ref.get()
+    user_type = user_data.get('userType')
 
     # If a specific username is provided in the URL, use that, otherwise use the one from the session
     username_to_display = username or current_username
-
+    
     # Render the home template with the username
-    return render_template('index_emp.html', username=username_to_display)
+    if user_type == "hr":
+        return render_template('index_hr.html', username = username_to_display) 
+    elif user_type == "emp":
+        return render_template('index_emp.html', username=username_to_display)
+    else:
+        flash('User type not found', 'error')
+        return redirect(url_for('sign_in'))
 
 @app.route('/resume')
 def resume_submission():
