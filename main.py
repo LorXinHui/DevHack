@@ -122,9 +122,26 @@ def my_application():
 
     # Fetch the application status from the database using the username
     user_ref = get_user()
-    application_status = bool(user_ref.get('application'))
+    application_status = user_ref.get('application', False)
+    print(session['username'])
+    print(application_status)
 
-    return render_template('apply_history.html', application_status = application_status)        
+    return render_template('apply_history.html', application_status = application_status)
+
+@app.route('/job_opening')
+def job_opening():
+    return render_template('opening.html') 
+
+@app.route('/publish_job', methods = ['POST'])
+def publish_job():
+    if 'username' not in session:
+        flash('Please sign in first', 'error')
+        return redirect(url_for('sign_in'))
+    
+    # Update the 'application' field to True
+    user_ref = get_user()
+    user_ref.update({'opening': True})
+    return jsonify({"message": "Job opening published successfully"})      
 
 def get_user():
     # Get the user from the session
