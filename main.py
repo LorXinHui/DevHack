@@ -1,6 +1,4 @@
-from flask import Flask, request, jsonify
-from flask import render_template
-from flask import session, redirect, url_for, flash
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for, flash
 import firebase_admin
 from firebase_admin import credentials, db, storage
 
@@ -9,7 +7,16 @@ app.secret_key = 'back_to_the_future'
 
 cred = credentials.Certificate("./credentials.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://mobileproject-f497e-default-rtdb.firebaseio.com/'})
-#firebase_storage = storage.bucket(app = firebase_admin.get_app())
+
+@app.before_request
+def check_authentication():
+    # List of routes that can be accessed without authentication
+    allowed_routes = ['sign_up', 'sign_in']
+
+    # If the requested route requires authentication and the user is not authenticated, redirect to the sign-in page
+    if request.endpoint and request.endpoint not in allowed_routes and 'username' not in session:
+        flash('Please sign in first', 'error')
+        return redirect(url_for('sign_in'))
 
 @app.route('/')
 def sign_in():
@@ -27,7 +34,9 @@ def signin(username):
     user_data = user_ref.get()
 
     if user_data:
-        session['username'] = user_data.get('name')
+        #user = User(user_data.get('name'), user_data.get('pwd'), user_data.get('userType'))
+        #session['user'] = user
+        session['username'] = username
         return jsonify({"user": user_data})
     else:
         return jsonify({"error": "User not found"}), 404
@@ -53,13 +62,15 @@ def signup():
         return jsonify({"error": "User already exists with the same name"})
 
     #Store user data
+    userType = data.get('userType')
     new_user_ref = users_ref.set({
         'name': name,
         'pwd': data.get('pwd'),
-        'userType': data.get('userType')
+        'userType': userType,
+        'application': False if userType == 'emp' else None,  # For emp, set application to False; for hr, don't set it
+        'opening': False if userType == 'hr' else None  # For hr, set opening to False; for emp, don't set it
     })
     return jsonify({"message": "Data stored successfully", "user_id": name_key})
-
 
 @app.route('/home')
 def home(username=None):
@@ -68,7 +79,7 @@ def home(username=None):
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
 
-    # Get the username from the session
+    # Get the user from the session
     current_username = session['username']
     name_key = current_username.replace(' ', '_')
     
@@ -83,11 +94,11 @@ def home(username=None):
     user_type = user_data.get('userType')
 
     # If a specific username is provided in the URL, use that, otherwise use the one from the session
-    username_to_display = username or current_username
+    username_to_display = username or user_data.get('name')
     
     # Render the home template with the username
     if user_type == "hr":
-        return render_template('index_hr.html', username = username_to_display) 
+        return render_template('index_hr.html', username=username_to_display)
     elif user_type == "emp":
         return render_template('index_emp.html', username=username_to_display)
     else:
@@ -97,6 +108,32 @@ def home(username=None):
 @app.route('/resume')
 def resume_submission():
     return render_template('resume_submission.html')
+
+@app.route('/application')
+def application():
+    return render_template('application.html')
+
+@app.route('/submit_application', methods = ['POST'])
+def submit_application():
+    if 'username' not in session:
+        flash('Please sign in first', 'error')
+        return redirect(url_for('sign_in'))
+    
+    # Get the user from the session
+    current_username = session['username']
+    name_key = current_username.replace(' ', '_')
+    
+    # Create a reference to the 'users' node in the database
+    users_ref = db.reference('users')
+
+    # Create a reference to the specific user using the provided username
+    user_ref = users_ref.child(name_key)
+
+    # Update the 'application' field to True
+    user_ref.update({'application': True})
+    return jsonify({"message": "Application submitted successfully"})
+    
+        
 
 if __name__ == "__main__":
     app.run(debug=True)
