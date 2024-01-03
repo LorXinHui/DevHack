@@ -34,8 +34,6 @@ def signin(username):
     user_data = user_ref.get()
 
     if user_data:
-        #user = User(user_data.get('name'), user_data.get('pwd'), user_data.get('userType'))
-        #session['user'] = user
         session['username'] = username
         return jsonify({"user": user_data})
     else:
@@ -79,17 +77,8 @@ def home(username=None):
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
 
-    # Get the user from the session
-    current_username = session['username']
-    name_key = current_username.replace(' ', '_')
-    
-    # Create a reference to the 'users' node in the database
-    users_ref = db.reference('users')
-
-    # Create a reference to the specific user using the provided username
-    user_ref = users_ref.child(name_key)
-
     # Retrieve the user data
+    user_ref = get_user()
     user_data = user_ref.get()
     user_type = user_data.get('userType')
 
@@ -119,6 +108,25 @@ def submit_application():
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
     
+    # Update the 'application' field to True
+    user_ref = get_user()
+    user_ref.update({'application': True})
+    return jsonify({"message": "Application submitted successfully"})
+    
+@app.route('/my_application')
+def my_application():
+    # Check if the user is signed in
+    if 'username' not in session:
+        flash('Please sign in first', 'error')
+        return redirect(url_for('sign_in'))
+
+    # Fetch the application status from the database using the username
+    user_ref = get_user()
+    application_status = bool(user_ref.get('application'))
+
+    return render_template('apply_history.html', application_status = application_status)        
+
+def get_user():
     # Get the user from the session
     current_username = session['username']
     name_key = current_username.replace(' ', '_')
@@ -128,12 +136,7 @@ def submit_application():
 
     # Create a reference to the specific user using the provided username
     user_ref = users_ref.child(name_key)
-
-    # Update the 'application' field to True
-    user_ref.update({'application': True})
-    return jsonify({"message": "Application submitted successfully"})
-    
-        
+    return user_ref    
 
 if __name__ == "__main__":
     app.run(debug=True)
