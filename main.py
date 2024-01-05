@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, session, redirect, url_for, flash
 import firebase_admin
 from firebase_admin import credentials, db
+from server1 import grade 
 
 app = Flask(__name__)
 app.secret_key = 'back_to_the_future'
@@ -8,7 +9,7 @@ app.secret_key = 'back_to_the_future'
 cred = credentials.Certificate("./mobileproject-f497e-firebase-adminsdk-q9hdw-d87f5e31b5.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://mobileproject-f497e-default-rtdb.firebaseio.com/'})
 
-
+"""
 @app.before_request
 def check_authentication():
     # List of routes that can be accessed without authentication
@@ -18,7 +19,7 @@ def check_authentication():
     if request.endpoint and request.endpoint not in allowed_routes and 'username' not in session:
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
-
+"""
 
 @app.route('/')
 def sign_in():
@@ -83,7 +84,6 @@ def home(username=None):
     user_ref = get_user()
     user_data = user_ref.get()
     user_type = user_data.get('userType')
-    print(user_type)
 
     # If a specific username is provided in the URL, use that, otherwise use the one from the session
     username_to_display = username or user_data.get('name')
@@ -118,6 +118,8 @@ def submit_application():
     # Update the 'application' field to True
     user_ref = get_user()
     user_ref.update({'application': True})
+    grade_obtain = grade()
+    user_ref.update({'grade' : grade_obtain})
     return jsonify({"message": "Application submitted successfully"})
     
 @app.route('/my_application')
