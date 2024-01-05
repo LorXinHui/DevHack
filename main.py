@@ -1,13 +1,14 @@
 from flask import Flask, request, jsonify, render_template, session, redirect, url_for, flash
 import firebase_admin
-from firebase_admin import credentials, db, storage
+from firebase_admin import credentials, db
 
 app = Flask(__name__)
 app.secret_key = 'back_to_the_future'
 
-cred = credentials.Certificate("./credentials.json")
+cred = credentials.Certificate("./mobileproject-f497e-firebase-adminsdk-q9hdw-d87f5e31b5.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://mobileproject-f497e-default-rtdb.firebaseio.com/'})
 
+"""
 @app.before_request
 def check_authentication():
     # List of routes that can be accessed without authentication
@@ -17,6 +18,7 @@ def check_authentication():
     if request.endpoint and request.endpoint not in allowed_routes and 'username' not in session:
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
+"""
 
 @app.route('/')
 def sign_in():
@@ -61,7 +63,7 @@ def signup():
 
     #Store user data
     userType = data.get('userType')
-    new_user_ref = users_ref.set({
+    users_ref.set({
         'name': name,
         'pwd': data.get('pwd'),
         'userType': userType,
