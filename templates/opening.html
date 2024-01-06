@@ -1,0 +1,117 @@
+{% extends 'index_hr.html' %}
+
+{% block body %}
+<style>
+    section {
+        display: none;
+    }
+
+    section.active {
+        display: block;
+    }
+</style>
+
+<br>
+    <section id = "privacy" class = "active">
+        <h3>Privacy Declaration</h3>
+        <p>
+        By proceeding with this job opening publication, I confirm that I have read and understood the <a href="#">Privacy Collection Statement</a> which will apply to any company information that I submit in my application. 
+        <br><br>
+        For more information about Data Protection and Privacy please see our <a href="#">Data Protection and Privacy Procedure</a>. 
+        </p>
+
+        <b onclick = "proceed()">Agree</b>
+    </section>
+
+    <section id = "opening">
+        <form action="#" method="post">
+            <div class="container">
+                <label for="cname"><b>Company Name</b></label>
+                <input type="text" placeholder="Enter Company Name" name="cname" required>
+                <br>
+                <label for="cloc"><b>Company Location</b></label>
+                <input type="text" placeholder="Enter Company Location" name="cloc" required>
+                <br>
+                <label for="pos"><b>Position</b></label>
+                <input type="text" placeholder="Enter Position Recruiting" name="pos" required>
+                <br>
+                <label for="pos-type"><b>Position Category</b></label>
+                <br>
+                <select name="pos-type" id="pos-type">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value = "hr">Human Resource/ Talent Acquisition</option>
+                    <option value = "design">Designer</option>
+                    <option value = "it">Information Technology</option>
+                    <option value = "teacher">Teacher</option>
+                    <option value = "adv">Advocate</option>
+                    <option value = "bd">Business Development</option>
+                    <option value = "health">Healthcare</option>
+                    <option value = "fit">Fitness</option>
+                    <option value = "agr">Agriculture</option>
+                    <option value = "bpo">Business Process Outsourcing (BPO)</option>
+                    <option value = "sales">Sales</option>
+                    <option value = "consult">Consultant</option>
+                    <option value = "media">Digital Media</option>
+                    <option value = "auto">Automobile</option>
+                    <option value = "chef">Chef</option>
+                    <option value = "finance">Finance</option>
+                    <option value = "app">Apparel</option>
+                    <option value = "eng">Engineering</option>
+                    <option value = "acc">Accountant</option>
+                    <option value = "con">Construction</option>
+                    <option value = "pb">Public Relations</option>
+                    <option value = "bank">Banking</option>
+                    <option value = "art">Arts</option>
+                    <option value = "avi">Aviation</option>
+                </select>
+                <br>
+                <label for="desc"><b>Job Description</b></label>
+                <input type="text" placeholder="Enter Job Description" name="desc" required>
+                <br>
+                <label for="qua"><b>Job Qualification</b></label>
+                <input type="text" placeholder="Enter Job Qualification" name="qua" required>
+            </div>
+        </form>
+        <br>
+        <input type = "submit" id = "publish_btn" value = "Publish Job Opening" class = "btn btn-primary">
+    </section>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+    
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    
+        // Prevent default behavior for anchor tags
+        document.querySelectorAll('nav a').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        function proceed(){
+            showSection('opening');
+        }
+
+        document.getElementById('publish_btn').addEventListener('click', function() {
+            // Assuming you're using jQuery for the AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/publish_job',
+                success: function(response) {
+                    console.log(response.message);
+                    window.location.href = '/home';
+                },
+                error: function(error) {
+                    console.error(error.responseJSON.error);
+                    // Optionally, you can handle errors or provide user feedback
+                }
+            });
+        });
+    </script>
+{% endblock %}
