@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>TalentSync Hub</title>
+</head>
+
+<body>
+    <div class = "container">
+        <form action = "#" method = "POST" enctype = "multipart/form-data" onsubmit = "return printUserInput()">
+            <label for = "name"><b>Full Name</b></label>
+            <input type = "text" placeholder="Enter Full Name" name = "name" id = "name" required>
+            <br>
+
+            <label for = "pwd"><b>Password</b></label>
+            <input type = "password" placeholder = "Enter Password" name = "pwd" id = "pwd" required>
+            <br>
+
+            <label for = "user"><b>User Type</b></label>
+            <select name="user-type" id="user-type">
+                <option disabled selected value> -- select an option -- </option>
+                <option value = "hr">Human Resource/ Talent Acquisition</option>
+                <option value = "emp">Job Seeker</option>
+            </select>
+            <br>
+
+            <input type = "submit" value = "Sign Up" class = "btn btn-primary">
+        </form>
+    </div>
+
+    <script>
+        function printUserInput() {
+            // Retrieve form data
+            const name = document.getElementById('name').value;
+            var pwd = $("#pwd").val();
+            var userType = $("#user-type").val();
+
+            // Make an AJAX request to your Flask route
+            $.ajax({
+                type: "POST",
+                url: "/sign_up",  // Update this with your actual Flask route for sign-up
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify({ "name": name, "pwd": pwd, "userType": userType }),
+                success: function(response) {
+                    console.log(response);
+                    window.location.href = '/';
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

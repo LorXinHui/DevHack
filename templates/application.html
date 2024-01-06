@@ -1,0 +1,188 @@
+{% extends 'index_emp.html' %}
+
+{% block body %}
+<style>
+    section {
+        display: none;
+    }
+
+    section.active {
+        display: block;
+    }
+</style>
+
+<br>
+    <section id = "privacy" class = "active">
+        <h3>Privacy Declaration</h3>
+        <p>
+        By proceeding with this application, I confirm that I have read and understood the <a href="#">Privacy Collection Statement</a> which will apply to any personal information that I submit in my application. 
+        <br><br>
+        For more information about Data Protection and Privacy please see our <a href="#">Data Protection and Privacy Procedure</a>. 
+        </p>
+
+        <b onclick = "proceed()">Agree</b>
+    </section>
+
+    <section id = "contact">
+        <nav>
+            <ul>
+                <li><a href = "#" onclick = "showSection('contact')">Contact Information</a></li>
+                <li><a href = "#" onclick = "showSection('details')">Personal Details</a></li>
+                <li><a href = "#" onclick = "showSection('resume')">Resume Submission</a></li>
+                <li><a href = "#" onclick = "showSection('submit')"><b>Submit Application</b></a></li>
+            </ul>
+        </nav>
+        <br>
+        <h3>Contact Information</h3>
+        <form action="#" method="POST" enctype="multipart/form-data" >
+            <div class="container">
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter email" name="email" required>
+                <br>
+                <label for="address"><b>Address</b></label>
+                <input type="text" placeholder="Enter address" name="address" required>
+                <br>
+                <label for="phone"><b>Contact Number</b></label>
+                <input type="text" placeholder="Enter contact number" name = "phone" required>
+                <br>
+                <label for="phone2"><b>Secondary Contact Number (if applicable)</b></label>
+                <input type="text" placeholder="Enter secondary contact number" name="phone2">
+            </div>
+        </form>
+    </section>
+
+    <section id = "details">
+        <nav>
+            <ul>
+                <li><a href = "#" onclick = "showSection('contact')">Contact Information</a></li>
+                <li><a href = "#" onclick = "showSection('details')">Personal Details</a></li>
+                <li><a href = "#" onclick = "showSection('resume')">Resume Submission</a></li>
+                <li><a href = "#" onclick = "showSection('submit')"><b>Submit Application</b></a></li>
+            </ul>
+        </nav>
+        <br>
+        <h3>Personal Details</h3>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="container">
+                <label for="gname"><b>Legal given name(s)</b></label>
+                <input type="text" placeholder="Enter given name" name="gname" required>
+                <br>
+                <label for="lname"><b>Legal last name</b></label>
+                <input type="text" placeholder="Enter last/ family name" name="lname" required>
+                <br>
+                <label for="pname"><b>Preferred name (if applicable)</b></label>
+                <input type="text" placeholder="Enter preferred name (if applicable)" name="pname">
+                <br>
+                <label for="bdate"><b>Birthdate</b></label>
+                <input type="date" placeholder="Enter Birthdate (dd/mm/yyyy)" name="bdate" required>
+                <br>
+                <label for="bcountry"><b>Country of Birth</b></label>
+                <input type="text" placeholder="Enter birth country" name="bcountry" required>
+                <br>
+                <label for="rcountry"><b>Country of Residence</b></label>
+                <input type="text" placeholder="Enter current resident country" name="rcountry" required>
+                <br>
+                <label for="gender"><b>Gender</b></label>
+                <br>
+                <select name="gender" id="gender">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value = "male">Male</option>
+                    <option value = "female">Female</option>
+                    <option value = "binary">Prefer not to say</option>
+                </select>    
+                <br>
+                <label for="pronoun"><b>Pronoun</b></label>
+                <br>
+                <select name="pronoun" id="pronoun">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value = "he">He/Him/His </option>
+                    <option value = "she">She/Her/Hers</option>
+                    <option value = "they">They/Them/Theirs</option>
+                    <option value = "null">Prefer not to say</option>
+                </select> 
+            </div>
+        </form>
+    </section>
+
+    <section id = "resume">
+        <nav>
+            <ul>
+                <li><a href = "#" onclick = "showSection('contact')">Contact Information</a></li>
+                <li><a href = "#" onclick = "showSection('details')">Personal Details</a></li>
+                <li><a href = "#" onclick = "showSection('resume')">Resume Submission</a></li>
+                <li><a href = "#" onclick = "showSection('submit')"><b>Submit Application</b></a></li>
+            </ul>
+        </nav>
+        <br>
+        <h3>Submit Your Resume Link Here:</h3>
+        <form action = "#" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type = "text" id = "resume_link" name = "resume" required>
+            </div>
+        </form>
+    </section>
+
+    <section id = "submit">
+        <nav>
+            <ul>
+                <li><a href = "#" onclick = "showSection('contact')">Contact Information</a></li>
+                <li><a href = "#" onclick = "showSection('details')">Personal Details</a></li>
+                <li><a href = "#" onclick = "showSection('resume')">Resume Submission</a></li>
+                <li><a href = "#" onclick = "showSection('submit')"><b>Submit Application</b></a></li>
+            </ul>
+        </nav>
+        <br>
+        <h4>Thank you for taking the time to complete your application!</h4>
+        <p>
+            Your information has been carefully provided, and we appreciate the effort you've put into this process. To finalize your application, please click the "Submit" button below. Please be aware that no changes can be made after clicking submit.
+            <br>
+            This action will conclude your application process, and our team will proceed with reviewing your submission. If there are any additional steps required, we will contact you using the provided contact information.
+            <br>
+        </p>
+        <input type = "submit" id = "submit_btn" value = "Submit Application"  class = "btn btn-primary">
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+    
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    
+        // Prevent default behavior for anchor tags
+        document.querySelectorAll('nav a').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        function proceed(){
+            showSection('contact');
+        }
+
+        document.getElementById('submit_btn').addEventListener('click', function() {
+
+            var resume_link = document.getElementById('resume_link').value;
+
+            // Assuming you're using jQuery for the AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/submit_application',
+                contentType: "application/json;charset=UTF-8", 
+                data: JSON.stringify({"resume": resume_link}),
+                success: function(response) {
+                    console.log(response.message);
+                    window.location.href = '/my_application';
+                },
+                error: function(error) {
+                    console.error(error.responseJSON.error);
+                    // Optionally, you can handle errors or provide user feedback
+                }
+            });
+        });
+    </script>
+{% endblock %}
