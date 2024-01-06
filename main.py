@@ -118,6 +118,9 @@ def submit_application():
     # Update the 'application' field to True
     user_ref = get_user()
     user_ref.update({'application': True})
+    data = request.get_json()
+    resume_link = data.get('resume')
+    user_ref.update({'resume': resume_link})
     grade_obtain = grade()
     user_ref.update({'grade' : grade_obtain})
     return jsonify({"message": "Application submitted successfully"})

@@ -117,8 +117,7 @@
         <h3>Submit Your Resume Link Here:</h3>
         <form action = "#" method="POST" enctype="multipart/form-data">
             <div class="input-group">
-                <input type = "text" name = "resume" required>
-                <input type = "submit" value = "Submit Resume" class = "btn btn-primary">
+                <input type = "text" id = "resume_link" name = "resume" required>
             </div>
         </form>
     </section>
@@ -166,10 +165,15 @@
         }
 
         document.getElementById('submit_btn').addEventListener('click', function() {
+
+            var resume_link = document.getElementById('resume_link').value;
+
             // Assuming you're using jQuery for the AJAX request
             $.ajax({
                 type: 'POST',
                 url: '/submit_application',
+                contentType: "application/json;charset=UTF-8", 
+                data: JSON.stringify({"resume": resume_link}),
                 success: function(response) {
                     console.log(response.message);
                     window.location.href = '/my_application';
