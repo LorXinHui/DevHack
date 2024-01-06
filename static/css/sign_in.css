@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./images/background.png'); /* Replace with the path to your image */
+    background-size: contain; /* This will make the background show the entire image */
+    background-position: center; /* This will center the background image */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn.btn-primary {
+    background-color: #1D2D52;
+    color: #ffffff;
+    border: none;
+}

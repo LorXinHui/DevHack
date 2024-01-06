@@ -3,23 +3,12 @@ import firebase_admin
 from firebase_admin import credentials, db
 from server1 import grade 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = 'back_to_the_future'
 
 cred = credentials.Certificate("./mobileproject-f497e-firebase-adminsdk-q9hdw-d87f5e31b5.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://mobileproject-f497e-default-rtdb.firebaseio.com/'})
 
-"""
-@app.before_request
-def check_authentication():
-    # List of routes that can be accessed without authentication
-    allowed_routes = ['sign_up', 'sign_in']
-
-    # If the requested route requires authentication and the user is not authenticated, redirect to the sign-in page
-    if request.endpoint and request.endpoint not in allowed_routes and 'username' not in session:
-        flash('Please sign in first', 'error')
-        return redirect(url_for('sign_in'))
-"""
 
 @app.route('/')
 def sign_in():
@@ -143,7 +132,6 @@ def my_application():
     if app_ref:
         app_data = app_ref.get()
         application_status = app_data.get('status', 'In progress')
-        print(application_status)
     else:
         application_status = None
     
@@ -176,7 +164,6 @@ def update_status():
     candidate_name = request.form.get('candidateName')
     
     candidate_ref = get_candidate(candidate_name)
-    candidate_data = candidate_ref.get()
     
     candidate_ref.update({'status': status})
     return jsonify({"message": "Candidate status updated successfully"})

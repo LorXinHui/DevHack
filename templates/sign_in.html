@@ -6,10 +6,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href = "static/css/sign_in.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <title>TalentSync Hub</title>
 </head>
 
 <body>
+    <h1 style = "font-family: 'Great Vibes', cursive; font-size: 60px; color: #1D2D52"><b>TalentSync Hub</b></h1>
+    <br>
     <div class = "container">
         <form action = "#" method = "GET" enctype = "multipart/form-data" onsubmit = "return checkUser()">
             <label for = "name"><b>Full Name</b></label>
@@ -19,16 +28,16 @@
             <label for = "pwd"><b>Password</b></label>
             <input type = "password" placeholder = "Enter Password" name = "pwd" id = "pwd" required>
             <br>
-
+            <br>
             <input type = "submit" value = "Sign In" class = "btn btn-primary">
         </form>
     </div>
-
+    <br>
     <div class = "container">
         <text>New to Talent Sync? </text>
         <a href = '/signup'>Sign Up Here</a>
     </div>
-
+    <br>
     <div id = "message"></div>
 
     <script>
