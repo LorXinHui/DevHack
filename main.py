@@ -115,14 +115,18 @@ def submit_application():
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
     
-    # Update the 'application' field to True
+    # Get the user data
     user_ref = get_user()
     user_ref.update({'application': True})
     data = request.get_json()
     resume_link = data.get('resume')
-    user_ref.update({'resume': resume_link})
     grade_obtain = grade()
-    user_ref.update({'grade' : grade_obtain})
+    
+    # Keep track of candidates for the application
+    name = user_ref.get().get('name')
+    name_key = name.replace(' ', '_')
+    app_ref = db.reference('application').child(name_key)
+    app_ref.set({'name': name, 'resume': resume_link, 'grade': grade_obtain, 'status': 'In progress'})
     return jsonify({"message": "Application submitted successfully"})
     
 @app.route('/my_application')
@@ -133,11 +137,17 @@ def my_application():
         return redirect(url_for('sign_in'))
 
     # Fetch the application status from the database using the username
-    user_ref = get_user()
-    user_data = user_ref.get()
-    application_status = user_data.get('application')
-
-    return render_template('apply_history.html', application_status = application_status)
+    username = session['username']
+    app_ref = get_candidate(username)
+    
+    if app_ref:
+        app_data = app_ref.get()
+        application_status = app_data.get('status', 'In progress')
+        print(application_status)
+    else:
+        application_status = None
+    
+    return render_template('apply_history.html', application = application_status)
 
 @app.route('/job_opening')
 def job_opening():
@@ -149,10 +159,27 @@ def publish_job():
         flash('Please sign in first', 'error')
         return redirect(url_for('sign_in'))
     
-    # Update the 'application' field to True
+    # Update the 'opening' field to True
     user_ref = get_user()
     user_ref.update({'opening': True})
-    return jsonify({"message": "Job opening published successfully"})      
+    return jsonify({"message": "Job opening published successfully"})
+
+@app.route('/candidates')
+def candidates():
+    candidate = db.reference('application')
+    candidate_data = candidate.get()
+    return render_template('candidate.html', candidates = candidate_data) 
+
+@app.route('/update_status', methods = ['POST'])
+def update_status():
+    status = request.form.get('status')
+    candidate_name = request.form.get('candidateName')
+    
+    candidate_ref = get_candidate(candidate_name)
+    candidate_data = candidate_ref.get()
+    
+    candidate_ref.update({'status': status})
+    return jsonify({"message": "Candidate status updated successfully"})
 
 def get_user():
     # Get the user from the session
@@ -164,7 +191,14 @@ def get_user():
 
     # Create a reference to the specific user using the provided username
     user_ref = users_ref.child(name_key)
-    return user_ref    
+    return user_ref
+
+def get_candidate(name):
+    # Get the candidate data
+    candidate_key = name.replace(' ', '_')
+    candidate_ref = db.reference('application').child(candidate_key)
+    return candidate_ref
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

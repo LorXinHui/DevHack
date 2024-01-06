@@ -61,7 +61,7 @@
                             <li>Excellent communication and teamwork skills</li>
                         </ul>
         
-                        <button type="submit" onclick="document.location='/DevHack/html/candidate.html'" id="apply">View Candidates</button>
+                        <button type="submit" onclick="view()" id="view">View Candidates</button>
                     </p>
                 </div>
             </div>
@@ -70,5 +70,11 @@
         {% endif %}
         {% endblock body %}
     </div>
+
+    <script>
+        function view(){
+            window.location.href = '/candidates';
+        }
+    </script>
 </body>
 </html>
