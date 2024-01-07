@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Monteserrat', sans-serif;
+}
+
+.btn.btn-primary {
+    background-color: #1D2D52;
+    color: #ffffff;
+    border: none;
+}
+
+.navbar {
+    background-color: #1D2D52; /* Replace with your preferred background color */
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+    color: #ffffff; /* Replace with your preferred font color */
+    font-family: 'Monteserrat', sans-serif;
+}
