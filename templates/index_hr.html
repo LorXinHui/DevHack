@@ -12,15 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     <title>TalentSync Hub</title>
 </head>
 <body>
 
-    <nav class = "navbar navbar-dark bg-primary">
+    <nav class = "navbar">
         <div class = "container">
             <a href="/home" class = "navbar-brand">
-                <h3 class = "display-7">TalentSync Hub</h3>
+                <img src = "/static/css/images/logo.png" alt = "Logo" class = "navbar-logo">
+                <h3 class = "display-7" style = "font-family: 'Great Vibes', cursive; font-size: 50px; color: #ffffff">TalentSync Hub</h3>
             </a>
             <ul class = "navbar-nav">
                 <li class = "nav-item" >
@@ -38,7 +40,7 @@
     <!-- Display username if available -->
     {% if username %}
     <div class="container">
-        <h1>Welcome, {{ username }}!</h1>
+        <h1>Welcome, <b style = "font-family: 'Great Vibes', cursive; font-size: 70px;">{{ username }}</b> !</h1>
         <h3>Find the suitable candidate in TalentSync</h3>
     </div>
     {% endif %}
@@ -67,10 +69,10 @@
                             <li>Eagerness to learn and adapt in a fast-paced environment</li>
                             <li>Excellent communication and teamwork skills</li>
                         </ul>
-        
-                        <button type="submit" onclick="view()" id="view">View Candidates</button>
+                        <input type = "submit" onclick = "view()" id = "view" value = "View Candidates" class = "btn btn-primary">
                     </p>
                 </div>
+                <img src="/static/css/images/border.png" alt="Image" class="bottom-right-image">
             </div>
         {% else %}
             <a href = '/job_opening'> Publish a job opening for your company!!! </a>

@@ -1,6 +1,9 @@
 {% extends 'index_hr.html'%}
 
 {% block body %}
+
+<h1>Candidates</h1>
+
 {% if candidates %}
     {% for candidate_key, candidate_data in candidates.items() %}
       <div class="card candidate-card">
@@ -16,6 +19,7 @@
           <input type="submit" class="contact-btn btn btn-primary" value="Contact for Interview">
           <input type="submit" class="reject-btn btn btn-primary" value="Reject">
           <br>
+          <img src="/static/css/images/border.png" alt="Image" class="bottom-right-image">
         </div>
       </div>
       <br>

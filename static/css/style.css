@@ -4,6 +4,13 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
 .btn.btn-primary {
     background-color: #1D2D52;
     color: #ffffff;
