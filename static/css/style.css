@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Monteserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btn.btn-primary {
@@ -12,10 +12,63 @@ body {
 
 .navbar {
     background-color: #1D2D52; /* Replace with your preferred background color */
+    overflow: hidden; /* Ensure child elements don't overflow */
 }
 
-.navbar .navbar-brand,
+.navbar .container {
+    position: relative;
+}
+
+.navbar .navbar-brand {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none; /* Remove underlines from the link */
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-logo {
+    height: 100%; /* Set the height of the image to 100% of the parent container (navbar-brand) */
+    position: absolute;
+    left: 0;
+}
+
+.navbar .navbar-brand h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    margin-left: 80px;
+}
+
 .navbar .navbar-nav .nav-link {
-    color: #ffffff; /* Replace with your preferred font color */
-    font-family: 'Monteserrat', sans-serif;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    position: relative;
+    border: none;
+    padding: 20px; /* Add some padding for better visual appeal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.container {
+    position: relative;
+}
+
+.bottom-right-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 70%; /* Set a maximum height for the image */
+    z-index: 1; /* Ensure the image is behind the text */
+}
+
+.container h3,
+.container p,
+.container ul,
+.container input {
+    position: relative;
+    z-index: 2; /* Ensure the text elements are on top of the image */
 }
