@@ -72,3 +72,19 @@ body {
     position: relative;
     z-index: 2; /* Ensure the text elements are on top of the image */
 }
+
+label {
+    display: inline-block;
+    width: 30%; /* Adjust the width based on your preference */
+    margin-bottom: 8px; /* Add spacing between labels */
+}
+
+input, select {
+    width: 65%; /* Adjust the width based on your preference */
+    padding: 8px; /* Add padding for better visual appeal */
+    margin-bottom: 16px; /* Add spacing between inputs */
+}
+
+input[type="submit"] {
+    width: auto; /* Let the submit button adjust its width */
+}
